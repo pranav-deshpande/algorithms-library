@@ -1,24 +1,32 @@
 package com.practice.algorithms.graph;
 
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
 import java.util.List;
 
 /**
  * The Graph Interface - essentials operations which can be carried out by this data structure
  */
+// TODO: Remove the temporary defaults on all the methods
+// They have been defaulted since I cannot implement all of them at once
 public interface Graph {
     /**
      * Adds the given edge to the graph
      *
      * @param edge edge
      */
-    public void addEdge(Edge edge);
+    default public void addEdge(Edge edge) {
+        throw new NotImplementedException();
+    }
 
     /**
      * Tells us whether the graph is a directed graph or an undirected graph
      *
      * @return true if the graph is a DiGraph(Directed Graph)
      */
-    public boolean isDirected();
+    default public boolean isDirected() {
+        throw new NotImplementedException();
+    }
 
     /**
      * Returns the shortest path from the start node to the end node
@@ -27,7 +35,9 @@ public interface Graph {
      * @param end   end
      * @return List<Node> The shortest path from start to end
      */
-    public List<Node> findShortestPath(Node start, Node end);
+    default public List<Node> findShortestPath(Node start, Node end) {
+        throw new NotImplementedException();
+    }
 
     /**
      * Returns all possible paths from the start node to the end node
@@ -36,7 +46,9 @@ public interface Graph {
      * @param end   end
      * @return List<List < Node>> All paths from start to end
      */
-    public List<List<Node>> findAllPaths(Node start, Node end);
+    default public List<List<Node>> findAllPaths(Node start, Node end) {
+        throw new NotImplementedException();
+    }
 
     /**
      * Returns shortest paths for all pairs of vertices in the graph.
@@ -44,14 +56,18 @@ public interface Graph {
      * @return List<List < Node>> Shortest paths for all pairs of vertices in the graph.
      * The start and end nodes will tell for which pair it is
      */
-    public List<List<Node>> findAllShortestPaths();
+    default public List<List<Node>> findAllShortestPaths() {
+        throw new NotImplementedException();
+    }
 
     /**
      * Finds out if the graph is a cyclic graph
      *
      * @return true if the graph is has cycles, false if not
      */
-    public boolean isCyclic();
+    default public boolean isCyclic() {
+        throw new NotImplementedException();
+    }
 
     /**
      * Returns true if the graph is Acyclic
@@ -63,26 +79,40 @@ public interface Graph {
     }
 
     /**
+     * Tells if the graph is a Directed Acyclic Graph
+     * @return true if it is a DAG
+     */
+    default public boolean isDAG() {
+        return isDirected() && isAcyclic();
+    }
+
+    /**
      * A mother vertex is a vertex from which all other nodes can be reached.
      *
      * @return the mother vertex of the graph(if exists)
      * else return null
      */
-    public Node getMotherVertex();
+    default public Node getMotherVertex() {
+        throw new NotImplementedException();
+    }
 
     /**
      * A mother vertex is a vertex from which all other nodes can be reached.
      *
      * @return All mother vertices. Empty List if none are there.
      */
-    public List<Node> getAllMotherVertices();
+    default public List<Node> getAllMotherVertices() {
+        throw new NotImplementedException();
+    }
 
     /**
      * A hamiltonian path is a path which visits all the vertices of a graph exactly once
      *
      * @return the traversal path
      */
-    public List<Node> getHamiltonianPath();
+    default public List<Node> getHamiltonianPath() {
+        throw new NotImplementedException();
+    }
 
     /**
      * A hamiltonian path is a path which visits all the vertices of a graph exactly once.
@@ -94,8 +124,9 @@ public interface Graph {
      *
      * @return true if a hamiltonian cycle exists
      */
-    public boolean isHamiltonian();
-
+    default public boolean isHamiltonian() {
+        throw new NotImplementedException();
+    }
 
     /**
      * A hamiltonian path is a path which visits all the vertices of a graph exactly once.
@@ -107,7 +138,9 @@ public interface Graph {
      *
      * @return true if a hamiltonian cycle exists
      */
-    public boolean isSemiHamiltonian();
+   default public boolean isSemiHamiltonian() {
+        throw new NotImplementedException();
+    }
 
     /**
      * Euler path => a path which visits all edges of a Graph. One is allowed to visit the same vertices again.
@@ -115,5 +148,27 @@ public interface Graph {
      *
      * @return The euler path
      */
-    public List<Node> getEulerPath();
+    default public List<Node> getEulerianPath() {
+        throw new NotImplementedException();
+    }
+
+    /**
+     * Euler path => a path which visits all edges of a Graph. One is allowed to visit the same vertices again. => SemiEulerian
+     * Euler circuit => The path ends up on the same vertex. =>  Eulerian
+     *
+     * @return true if the graph is Eulerian
+     */
+    default public boolean isEulerian() {
+        throw new NotImplementedException();
+    }
+
+    /**
+     * Euler path => a path which visits all edges of a Graph. One is allowed to visit the same vertices again. => SemiEulerian
+     * Euler circuit => The path ends up on the same vertex. =>  Eulerian
+     *
+     * @return true if the graph is SemiEulerian
+     */
+    default public boolean isSemiEulerian() {
+        throw new NotImplementedException();
+    }
 }
