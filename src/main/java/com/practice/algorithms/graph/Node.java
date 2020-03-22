@@ -11,7 +11,8 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
-public class Node {
-    private Integer index;
-    private Object data;
+public class Node<T> {
+    String nodeLabel;
+    private T data;
+    private Object metaData;
 }

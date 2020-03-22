@@ -12,11 +12,11 @@ import lombok.Setter;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Edge {
+public class Edge<T> {
     @NonNull
-    private Node from;
+    private Node<T> from;
     @NonNull
-    private Node to;
+    private Node<T> to;
     @NonNull
     private boolean isWeighted;
     @NonNull
@@ -28,9 +28,10 @@ public class Edge {
      * @param from from
      * @param to   to
      */
-    public Edge(Node from, Node to) {
+    public Edge(Node<T> from, Node<T> to) {
         this.from = from;
         this.to = to;
+        isWeighted = false;
         weight = 1;
     }
 

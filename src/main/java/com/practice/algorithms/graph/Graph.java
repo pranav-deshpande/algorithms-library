@@ -7,15 +7,13 @@ import java.util.List;
  */
 // TODO: Remove the temporary defaults on all the methods
 // They have been defaulted since I cannot implement all of them at once
-public interface Graph {
+public interface Graph<T> {
     /**
      * Adds the given edge to the graph
      *
      * @param edge edge
      */
-    default public void addEdge(Edge edge) {
-        throw new UnsupportedOperationException();
-    }
+    public void addEdge(Edge<T> edge);
 
     /**
      * Tells us whether the graph is a directed graph or an undirected graph
@@ -31,30 +29,28 @@ public interface Graph {
      *
      * @param start start
      * @param end   end
-     * @return List<Node> The shortest path from start to end
+     * @return List<Node < T>> The shortest path from start to end
      */
-    default public List<Node> findShortestPath(Node start, Node end) {
-        throw new UnsupportedOperationException();
-    }
+    public List<Node<T>> findShortestPath(Node<T> start, Node<T> end);
 
     /**
      * Returns all possible paths from the start node to the end node
      *
      * @param start start
      * @param end   end
-     * @return List<List < Node>> All paths from start to end
+     * @return List<List < Node < T>>> All paths from start to end
      */
-    default public List<List<Node>> findAllPaths(Node start, Node end) {
+    default public List<List<Node<T>>> findAllPaths(Node<T> start, Node<T> end) {
         throw new UnsupportedOperationException();
     }
 
     /**
      * Returns shortest paths for all pairs of vertices in the graph.
      *
-     * @return List<List < Node>> Shortest paths for all pairs of vertices in the graph.
+     * @return List<List < Node < T>>> Shortest paths for all pairs of vertices in the graph.
      * The start and end nodes will tell for which pair it is
      */
-    default public List<List<Node>> findAllShortestPaths() {
+    default public List<List<Node<T>>> findAllShortestPaths() {
         throw new UnsupportedOperationException();
     }
 
@@ -78,6 +74,7 @@ public interface Graph {
 
     /**
      * Tells if the graph is a Directed Acyclic Graph
+     *
      * @return true if it is a DAG
      */
     default public boolean isDAG() {
@@ -90,7 +87,7 @@ public interface Graph {
      * @return the mother vertex of the graph(if exists)
      * else return null
      */
-    default public Node getMotherVertex() {
+    default public Node<T> getMotherVertex() {
         throw new UnsupportedOperationException();
     }
 
@@ -99,7 +96,7 @@ public interface Graph {
      *
      * @return All mother vertices. Empty List if none are there.
      */
-    default public List<Node> getAllMotherVertices() {
+    default public List<Node<T>> getAllMotherVertices() {
         throw new UnsupportedOperationException();
     }
 
@@ -108,7 +105,7 @@ public interface Graph {
      *
      * @return the traversal path
      */
-    default public List<Node> getHamiltonianPath() {
+    default public List<Node<T>> getHamiltonianPath() {
         throw new UnsupportedOperationException();
     }
 
@@ -136,7 +133,7 @@ public interface Graph {
      *
      * @return true if a hamiltonian cycle exists
      */
-   default public boolean isSemiHamiltonian() {
+    default public boolean isSemiHamiltonian() {
         throw new UnsupportedOperationException();
     }
 
@@ -146,7 +143,7 @@ public interface Graph {
      *
      * @return The euler path
      */
-    default public List<Node> getEulerianPath() {
+    default public List<Node<T>> getEulerianPath() {
         throw new UnsupportedOperationException();
     }
 
