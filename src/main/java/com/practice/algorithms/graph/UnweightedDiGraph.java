@@ -25,11 +25,10 @@ public class UnweightedDiGraph<T> implements Graph<T> {
 
     @Override
     public void addEdge(Edge<T> edge) {
-        EdgeNode<T> edgeNode = EdgeNode.builder()
-                .node(edge.getTo())
-                .isWeighted(edge.isWeighted())
-                .weight(edge.getWeight())
-                .build();
+        EdgeNode<T> edgeNode = new EdgeNode<T>();
+        edgeNode.setNode(edge.getTo());
+        edgeNode.setWeighted(edge.isWeighted());
+        edgeNode.setWeight(edge.getWeight());
         adjacencyList.putIfAbsent(edge.getFrom(), new ArrayList<>());
         adjacencyList.get(edge.getFrom()).add(edgeNode);
     }
