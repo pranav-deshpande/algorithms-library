@@ -14,8 +14,8 @@ import java.util.stream.IntStream;
 
 // TODO: Make this a part of the actual abstract implementation
 /**
- I took the top down approach of actually defining the functions of the graph and then using them instead of
- just blindly practicing the algorithms. This will make me understand the stuff better as well.
+ * I took the top down approach of actually defining the functions of the graph and then using them instead of
+ * just blindly practicing the algorithms. This will make me understand the stuff better as well.
  */
 
 /**

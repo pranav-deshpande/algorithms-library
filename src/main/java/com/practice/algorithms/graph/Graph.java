@@ -1,7 +1,5 @@
 package com.practice.algorithms.graph;
 
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-
 import java.util.List;
 
 /**
@@ -16,7 +14,7 @@ public interface Graph {
      * @param edge edge
      */
     default public void addEdge(Edge edge) {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -25,7 +23,7 @@ public interface Graph {
      * @return true if the graph is a DiGraph(Directed Graph)
      */
     default public boolean isDirected() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -36,7 +34,7 @@ public interface Graph {
      * @return List<Node> The shortest path from start to end
      */
     default public List<Node> findShortestPath(Node start, Node end) {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -47,7 +45,7 @@ public interface Graph {
      * @return List<List < Node>> All paths from start to end
      */
     default public List<List<Node>> findAllPaths(Node start, Node end) {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -57,7 +55,7 @@ public interface Graph {
      * The start and end nodes will tell for which pair it is
      */
     default public List<List<Node>> findAllShortestPaths() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -66,7 +64,7 @@ public interface Graph {
      * @return true if the graph is has cycles, false if not
      */
     default public boolean isCyclic() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -93,7 +91,7 @@ public interface Graph {
      * else return null
      */
     default public Node getMotherVertex() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -102,7 +100,7 @@ public interface Graph {
      * @return All mother vertices. Empty List if none are there.
      */
     default public List<Node> getAllMotherVertices() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -111,7 +109,7 @@ public interface Graph {
      * @return the traversal path
      */
     default public List<Node> getHamiltonianPath() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -125,7 +123,7 @@ public interface Graph {
      * @return true if a hamiltonian cycle exists
      */
     default public boolean isHamiltonian() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -139,7 +137,7 @@ public interface Graph {
      * @return true if a hamiltonian cycle exists
      */
    default public boolean isSemiHamiltonian() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -149,7 +147,7 @@ public interface Graph {
      * @return The euler path
      */
     default public List<Node> getEulerianPath() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -159,7 +157,7 @@ public interface Graph {
      * @return true if the graph is Eulerian
      */
     default public boolean isEulerian() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     /**
@@ -169,6 +167,6 @@ public interface Graph {
      * @return true if the graph is SemiEulerian
      */
     default public boolean isSemiEulerian() {
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 }
