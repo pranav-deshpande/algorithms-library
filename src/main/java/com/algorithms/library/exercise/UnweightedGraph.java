@@ -1,4 +1,4 @@
-package com.practice.algorithms.exercise;
+package com.algorithms.library.exercise;
 
 import lombok.Builder;
 import lombok.Getter;

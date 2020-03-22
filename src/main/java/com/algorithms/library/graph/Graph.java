@@ -1,4 +1,4 @@
-package com.practice.algorithms.graph;
+package com.algorithms.library.graph;
 
 import java.util.List;
 

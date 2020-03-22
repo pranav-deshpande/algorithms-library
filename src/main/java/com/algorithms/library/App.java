@@ -1,9 +1,9 @@
-package com.practice.algorithms;
+package com.algorithms.library;
 
-import com.practice.algorithms.graph.Edge;
-import com.practice.algorithms.graph.Graph;
-import com.practice.algorithms.graph.Node;
-import com.practice.algorithms.graph.UnweightedDiGraph;
+import com.algorithms.library.graph.Edge;
+import com.algorithms.library.graph.Graph;
+import com.algorithms.library.graph.Node;
+import com.algorithms.library.graph.UnweightedDiGraph;
 
 /**
  * Hello world!
