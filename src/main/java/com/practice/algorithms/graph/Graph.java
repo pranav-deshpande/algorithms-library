@@ -8,6 +8,14 @@ import java.util.List;
 // TODO: Remove the temporary defaults on all the methods
 // They have been defaulted since I cannot implement all of them at once
 public interface Graph<T> {
+
+    /**
+     * Adds the given node to the graph. Useful for adding isolated nodes
+     *
+     * @param node node
+     */
+    public void addNode(Node<T> node);
+
     /**
      * Adds the given edge to the graph
      *

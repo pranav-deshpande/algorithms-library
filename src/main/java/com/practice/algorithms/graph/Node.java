@@ -15,4 +15,17 @@ public class Node<T> {
     String nodeLabel;
     private T data;
     private Object metaData;
+
+    public Node(T data) {
+        this.data = data;
+    }
+
+    public Node(String nodeLabel, T data) {
+        this.nodeLabel = nodeLabel;
+        this.data = data;
+    }
+
+    public String toString() {
+        return nodeLabel;
+    }
 }
