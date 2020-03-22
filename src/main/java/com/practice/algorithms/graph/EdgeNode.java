@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class EdgeNode<T> {
+class EdgeNode<T> {
     private Node<T> node;
     private boolean isWeighted;
     private Number weight;
