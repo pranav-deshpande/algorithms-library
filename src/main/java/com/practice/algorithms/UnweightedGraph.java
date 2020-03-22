@@ -8,13 +8,20 @@ import lombok.RequiredArgsConstructor;
 import java.util.*;
 import java.util.stream.IntStream;
 
+// TODO: Make this a part of the actual abstract implementation
+/**
+ I took the top down approach of actually defining the functions of the graph and then using them instead of
+ just blindly practicing the algorithms. This will make me understand the stuff better as well.
+ */
+
 /**
  * Using Lombok for the getter and setter as well as a default constructor
  */
 @Getter
 @Builder
 @RequiredArgsConstructor
-public class Graph {
+// This is the implementation of an unweighted graph
+public class UnweightedGraph {
     /**
      * The adjacency List used to represent the graph
      */
@@ -29,7 +36,7 @@ public class Graph {
     /**
      * Default Constructor
      */
-    public Graph() {
+    public UnweightedGraph() {
         adjacencyList = new ArrayList<>();
         isDirected = true;
     }
@@ -39,7 +46,7 @@ public class Graph {
      *
      * @param isDirected isDirected
      */
-    public Graph(boolean isDirected) {
+    public UnweightedGraph(boolean isDirected) {
         adjacencyList = new ArrayList<>();
         this.isDirected = isDirected;
     }
@@ -77,7 +84,8 @@ public class Graph {
 
     /**
      * Given a vertex, does BFS on the Graph and returns the order     *
-     * @return List<Integer> The node ordering
+     *
+     * @return List<Integer> The node visiting order
      */
     public List<Integer> breadthFirstSearch(Integer startVertex) {
         Queue<Integer> queue = new ArrayDeque<>();
@@ -92,8 +100,8 @@ public class Graph {
             int nextVertex = queue.poll(); // Poll returns and removes the head of the queue
             traversalPath.add(nextVertex); // Add the vertex to the traversal path
             List<Integer> adjacentVertices = adjacencyList.get(nextVertex);
-            for(Integer vertex : adjacentVertices) {
-                if(!isDiscovered.get(vertex)) {
+            for (Integer vertex : adjacentVertices) {
+                if (!isDiscovered.get(vertex)) {
                     isDiscovered.set(vertex, Boolean.TRUE);
                     queue.add(vertex);
                 }
@@ -103,14 +111,32 @@ public class Graph {
     }
 
     /**
-     * Given a vertex, does DFC on the Graph and returns the order
-     * @return List<Integer> The node ordering
+     * Given a vertex, does DFS on the Graph and returns the order
+     * This is the iterative version of DFS - simple.
+     * Just replace the queue in BFS with a stack.
+     *
+     * @return List<Integer> The node visiting order
      */
-    public List<Integer> depthFirstSearch(Integer startVertex) {
+    public List<Integer> depthFirstSearchIterative(Integer startVertex) {
         Stack<Integer> stack = new Stack<>();
         List<Boolean> isDiscovered = new ArrayList<>();
         List<Integer> traversalPath = new ArrayList<>();
-        // To be completed.
-        return null;
+        IntStream.range(0, adjacencyList.size()).forEach(var -> {
+            isDiscovered.add(var, Boolean.FALSE);
+        });
+        isDiscovered.set(startVertex, Boolean.TRUE);
+        stack.add(startVertex);
+        while (!stack.isEmpty()) {
+            int nextVertex = stack.pop(); // pop returns and removes the head of the stack
+            traversalPath.add(nextVertex); // Add the vertex to the traversal path
+            List<Integer> adjacentVertices = adjacencyList.get(nextVertex);
+            for (Integer vertex : adjacentVertices) {
+                if (!isDiscovered.get(vertex)) {
+                    isDiscovered.set(vertex, Boolean.TRUE);
+                    stack.add(vertex);
+                }
+            }
+        }
+        return traversalPath;
     }
 }
