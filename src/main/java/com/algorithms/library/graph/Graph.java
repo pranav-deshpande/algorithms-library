@@ -33,6 +33,15 @@ public interface Graph<T> {
     }
 
     /**
+     * Gives the distance of the shortest path from start to end
+     *
+     * @param start start
+     * @param end end
+     * @return Number the distance of the shortest path from start to end
+     */
+    public Integer getShortestPathDistance(Node<T> start, Node<T> end);
+
+    /**
      * Returns the shortest path from the start node to the end node
      *
      * @param start start
@@ -58,9 +67,7 @@ public interface Graph<T> {
      * @return List<List < Node < T>>> Shortest paths for all pairs of vertices in the graph.
      * The start and end nodes will tell for which pair it is
      */
-    default public List<List<Node<T>>> findAllShortestPaths() {
-        throw new UnsupportedOperationException();
-    }
+    public List<List<Node<T>>> findAllShortestPaths();
 
     /**
      * Finds out if the graph is a cyclic graph

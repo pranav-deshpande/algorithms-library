@@ -43,6 +43,41 @@ public class UnweightedDiGraph<T> implements Graph<T> {
         adjacencyList.get(edge.getFrom()).add(edgeNode);
     }
 
+    // Note that this can also be implemented as:
+    // return findShortestPath(source, target).size() - 1;
+    @Override
+    public Integer getShortestPathDistance(Node<T> start, Node<T> end) {
+        Queue<Node<T>> queue = new ArrayDeque<>();
+        Map<Node<T>, Boolean> isDiscovered = new HashMap<>();
+        Map<Node<T>, Integer> distance = new HashMap<>();
+        adjacencyList.keySet().forEach(key -> {
+            isDiscovered.put(key, Boolean.FALSE);
+            distance.put(key, Integer.MAX_VALUE);
+        });
+        isDiscovered.replace(start, Boolean.FALSE);
+        distance.replace(start, 0);
+        queue.add(start);
+        Integer dist = distance.get(start);
+        while (!queue.isEmpty()) {
+            Node<T> vertex = queue.poll();
+            if (vertex.equals(end)) {
+                dist = distance.get(vertex);
+            }
+            List<EdgeNode<T>> adjacentVertices = adjacencyList.get(vertex);
+            for (EdgeNode<T> edgeNode : adjacentVertices) {
+                Node<T> neighbourNode = edgeNode.getNode();
+                if (!isDiscovered.get(neighbourNode)) {
+                    isDiscovered.replace(neighbourNode, Boolean.TRUE);
+                    queue.add(neighbourNode);
+                    if (distance.get(neighbourNode) > distance.get(vertex) + 1) {
+                        distance.replace(neighbourNode, distance.get(vertex) + 1);
+                    }
+                }
+            }
+        }
+        return dist;
+    }
+
     @Override
     public List<Node<T>> findShortestPath(Node<T> source, Node<T> target) {
         Queue<Node<T>> queue = new ArrayDeque<>();
@@ -56,6 +91,9 @@ public class UnweightedDiGraph<T> implements Graph<T> {
         queue.add(source);
         while (!queue.isEmpty()) {
             Node<T> vertex = queue.poll(); // Poll returns and removes the head of the queue
+            if (vertex.equals(target)) {
+                break;
+            }
             List<EdgeNode<T>> adjacentVertices = adjacencyList.get(vertex);
             for (EdgeNode<T> edgeNode : adjacentVertices) {
                 Node<T> neighbourNode = edgeNode.getNode();
@@ -64,12 +102,14 @@ public class UnweightedDiGraph<T> implements Graph<T> {
                     queue.add(neighbourNode);
                     parent.replace(neighbourNode, vertex);
                 }
-                if (neighbourNode.equals(target)) {
-                    break;
-                }
             }
         }
         return constructPath(parent, target);
+    }
+
+    @Override
+    public List<List<Node<T>>> findAllShortestPaths() {
+        return null;
     }
 
     // Auxiliary function to construct the path out of the parent object
@@ -84,6 +124,4 @@ public class UnweightedDiGraph<T> implements Graph<T> {
         Collections.reverse(traversalPath);
         return traversalPath;
     }
-
-
 }

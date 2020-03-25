@@ -39,13 +39,13 @@ public class App {
         unweightedDiGraph.addEdge(new Edge<>(nodeA, nodeC));
         unweightedDiGraph.addEdge(new Edge<>(nodeC, nodeF));
 
+        System.out.println(unweightedDiGraph.getShortestPathDistance(nodeA, nodeE));
         System.out.println(unweightedDiGraph.findShortestPath(nodeA, nodeE));
+
+        System.out.println(unweightedDiGraph.getShortestPathDistance(nodeA, nodeF));
         System.out.println(unweightedDiGraph.findShortestPath(nodeA, nodeF));
 
-
-
-
-
-
+        System.out.println(unweightedDiGraph.getShortestPathDistance(nodeA, nodeA));
+        System.out.println(unweightedDiGraph.findShortestPath(nodeA, nodeA));
     }
 }
